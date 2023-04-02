@@ -1,0 +1,29 @@
+﻿@model Links
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col-12 col-md-7" style="margin: 50px auto;box-shadow: 0px 0px 10px -5px;">
+    <form asp-controller="Home" asp-action="GetShort" method="post" style="padding: 10px;">
+        <input type="hidden" asp-for="@Model.ShortKey"
+            value='@Guid.NewGuid().ToString().Trim().Replace("-","").Substring(0,5)'>
+        <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Title" asp-for="@Model.Title">
+                <span class="text-danger" asp-validation-for="@Model.Title"></span>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Link..." asp-for="@Model.Link">
+                <span asp-validation-for="@Model.Link" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-12" style="text-align: center;margin-top: 15px;">
+                <input type="submit" class="btn btn-outline-success" style="width: 300px;" value="Get Short Link">
+            </div>
+        </div>
+    </form>
+    <div class="alert alert-info">
+        <small>With this application you can shorten your long links.
+        </small>
+    </div>
+</div>

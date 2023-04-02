@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\My-LinkShortener-App.props" />
+</Project>

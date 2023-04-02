@@ -1,0 +1,39 @@
+@model IEnumerable<Links>
+
+<div class="col-12 col-md-11" style="margin: 50px auto;box-shadow: 0px 0px 10px -5px;">
+    <br>
+    @if (ViewData["MasageSuccess"] != null)
+    {
+        <div class="alert alert-success">
+            @ViewData["MasageSuccess"]
+        </div>
+    }
+    @if(ViewData["MasageError"]!=null)
+    {
+        <div class="alert alert-danger">
+            @ViewData["MasageError"]
+        </div>
+    }
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Link</th>
+                <th scope="col">Short Link</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Link</td>
+                    <td><a href="@item.ShortLink">@item.ShortLink</a></td>
+                    <td><form asp-controller="Home" asp-action="Delete" method="post"><input type="hidden" name="id" value="@item.id"><input type="submit" class="btn btn-danger btn-sm" value="Delete"></form></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
